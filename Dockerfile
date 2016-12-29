@@ -1,8 +1,8 @@
-FROM armv7/armhf-ubuntu:15.04
+FROM armv7/armhf-ubuntu:16.04
 MAINTAINER info@ryangrenz.com
 
 ENV GITLAB_VERSION=8.15.1 \
-    RUBY_VERSION=2.1 \
+    RUBY_VERSION=2.3 \
     GOLANG_VERSION=1.6.3 \
     GITLAB_SHELL_VERSION=4.1.1 \
     GITLAB_WORKHORSE_VERSION=1.2.1 \
@@ -27,9 +27,9 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv E1DD270288B4E60
  && DEBIAN_FRONTEND=noninteractive apt-get install -y wget supervisor logrotate locales curl \
       nginx openssh-server mysql-client postgresql-client redis-tools \
       git-core ruby${RUBY_VERSION} python2.7 python-docutils nodejs gettext-base \
-      libmysqlclient18 libpq5 zlib1g libyaml-0-2 libssl1.0.0 \
+      libmysqlclient20 libpq5 zlib1g libyaml-0-2 libssl1.0.0 \
       libgdbm3 libreadline6 libncurses5 libffi6 \
-      libxml2 libxslt1.1 libcurl3 libicu52 build-essential make sudo \
+      libxml2 libxslt1.1 libcurl3 libicu55 build-essential make sudo \
  && update-locale LANG=C.UTF-8 LC_MESSAGES=POSIX \
  && locale-gen en_US.UTF-8 \
  && DEBIAN_FRONTEND=noninteractive dpkg-reconfigure locales \
